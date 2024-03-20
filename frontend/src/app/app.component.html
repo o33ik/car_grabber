@@ -1,0 +1,31 @@
+<div class="container">
+  <div>
+    <form [formGroup]="formGroup" (ngSubmit)="submit()">
+      <h2 mat-dialog-title>Enter autoria link:</h2>
+      <mat-form-field>
+        <input formControlName="url" matInput>
+      </mat-form-field>
+
+      <button mat-button type="submit">Execute</button>
+    </form>
+  </div>
+
+  <div *ngIf="cars.length">
+    @for (car of cars; track car) {
+      <div>
+        <img src="{{car.photo_url}}"/>
+        <div>{{ car.name }}</div>
+        <div>{{ car.price }}</div>
+        <div>{{ car.engine }}</div>
+        <div>{{ car.mileage }}</div>
+        <div>{{ car.year }}</div>
+        <div>
+          <span *ngIf="car.vin_hidden">{{ car.vin }}</span>
+          <a *ngIf="!car.vin_hidden" role="button" (click)="searchByVin(car.vin)">{{ car.vin }}</a>
+        </div>
+        <div>{{ car.location }}</div>
+        <div><a href="{{car.url}}" target="_blank">URL</a></div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Details</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-spinner *ngIf="!imageUrls"></mat-spinner>
+  @if (imageUrls?.length) {
+    @for (url of imageUrls; track url) {
+      <img [src]="url"/>
+    }
+  } @else if (imageUrls?.length === 0){
+    nothing found
+  }
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
